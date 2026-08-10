@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClínicaApp — Diagnóstico Técnico Profesional</title>
+    <meta name="description" content="Evaluación técnica detallada del proyecto ClínicaApp, una aplicación Spring Boot.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="sidebar-brand">
+            <div class="brand-icon">C</div>
+            <span class="brand-title">ClínicaApp</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </header>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <div class="brand-icon">C</div>
+                    <div class="brand-title">ClínicaApp</div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li><a href="#overview" class="nav-link active"><span class="num">01</span> Overview</a></li>
+                    <li><a href="#proyecto" class="nav-link"><span class="num">02</span> Proyecto</a></li>
+                    <li><a href="#arquitectura" class="nav-link"><span class="num">03</span> Arquitectura</a></li>
+                    <li><a href="#configuracion" class="nav-link"><span class="num">04</span> Configuración</a></li>
+                    <li><a href="#errores" class="nav-link"><span class="num">05</span> Errores</a></li>
+                    <li><a href="#seguridad" class="nav-link"><span class="num">06</span> Seguridad</a></li>
+                    <li><a href="#api" class="nav-link"><span class="num">07</span> API</a></li>
+                    <li><a href="#testing" class="nav-link"><span class="num">08</span> Testing</a></li>
+                    <li><a href="#hallazgos" class="nav-link"><span class="num">09</span> Hallazgos</a></li>
+                    <li><a href="#madurez" class="nav-link"><span class="num">10</span> Madurez</a></li>
+                    <li><a href="#roadmap" class="nav-link"><span class="num">11</span> Roadmap</a></li>
+                    <li><a href="#evidencias" class="nav-link"><span class="num">12</span> Evidencias</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Auditoría de Software</p>
+                <p>Ingeniería de Sistemas</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- 01 OVERVIEW -->
+            <section id="overview" class="fade-in-section visible">
+                <div class="hero">
+                    <span class="section-tag">Auditoría Técnica</span>
+                    <h1 class="section-title" style="font-size: 3rem; margin-bottom: 0.5rem;">ClínicaApp</h1>
+                    <p class="hero-subtitle">Evaluación técnica detallada del estado actual de una aplicación Spring Boot, basada en revisión de arquitectura, configuración, seguridad, manejo de errores, documentación y pruebas.</p>
+                </div>
+
+                <div class="grid-4" style="margin-bottom: 2rem;">
+                    <div class="card kpi-card">
+                        <span class="kpi-title">Java Versión</span>
+                        <span class="kpi-value">Java 17</span>
+                        <span class="kpi-tag">JDK LTS</span>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-title">Framework</span>
+                        <span class="kpi-value">Spring Boot 3.2.1</span>
+                        <span class="kpi-tag">Spring 6</span>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-title">Base de Datos</span>
+                        <span class="kpi-value">MongoDB</span>
+                        <span class="kpi-tag">NoSQL Engine</span>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-title">Security</span>
+                        <span class="kpi-value">Spring Security 6</span>
+                        <span class="kpi-tag">OAuth2 / Form</span>
+                    </div>
+                </div>
+
+                <div class="grid-3">
+                    <div class="card status-summary-card">
+                        <div>
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Estado Técnico General</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 320px; margin-bottom: 1rem;">La aplicación cuenta con componentes modulares avanzados de terceros, pero presenta vulnerabilidades críticas en seguridad y fallos de construcción en pruebas automatizadas.</p>
+                        </div>
+                        <div class="status-badge-lg deficiente">
+                            <span class="dot" style="width: 12px; height: 12px; border-radius: 50%; background-color: var(--accent-red); display: inline-block;"></span>
+                            Deficiente / Crítico
+                        </div>
+                    </div>
+                    
+                    <div class="card findings-score-card">
+                        <div class="findings-count-item alta">
+                            <div class="count">6</div>
+                            <div class="label">Prioridad Alta</div>
+                        </div>
+                        <div class="findings-count-item media">
+                            <div class="count">4</div>
+                            <div class="label">Prioridad Media</div>
+                        </div>
+                        <div class="findings-count-item baja">
+                            <div class="count">1</div>
+                            <div class="label">Prioridad Baja</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 02 PROYECTO -->
+            <section id="proyecto" class="fade-in-section">
+                <span class="section-tag">02 — Proyecto</span>
+                <h2 class="section-title">Contexto & Stack Tecnológico</h2>
+                
+                <div class="card" style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 0.75rem; color: var(--accent-blue);">Problema que Resuelve</h3>
+                    <p style="color: var(--text-secondary);">El backend auditado pertenece al sistema ClínicaApp, un ecosistema de software modular diseñado para la administración de clínicas veterinarias bajo un esquema multiempresa. La solución permite conectar diversas sucursales clínicas, gestionar propietarios de mascotas, historiales clínicos, coordinar citas médicas, procesar pagos y automatizar alertas de inasistencias o análisis predictivos de salud animal empleando algoritmos de clasificación de Machine Learning.</p>
+                </div>
+
+                <h3 style="margin-bottom: 1.25rem; font-size: 1.35rem;">Tecnologías de Terceros Identificadas</h3>
+                <div class="grid-3">
+                    <div class="card tech-card">
+                        <div class="tech-icon">💳</div>
+                        <div class="tech-info">
+                            <h4>Stripe Java SDK</h4>
+                            <p>Versión 22.8.0. Gestión y simulación de procesamiento de cobros para citas médicas.</p>
+                        </div>
+                    </div>
+                    <div class="card tech-card">
+                        <div class="tech-icon">💬</div>
+                        <div class="tech-info">
+                            <h4>Twilio Java SDK</h4>
+                            <p>Versión 8.29.0. Envío de alertas y confirmaciones de citas por SMS y WhatsApp.</p>
+                        </div>
+                    </div>
+                    <div class="card tech-card">
+                        <div class="tech-icon">📊</div>
+                        <div class="tech-info">
+                            <h4>Weka Stable Library</h4>
+                            <p>Versión 3.8.6. Motor de minería de datos para predecir inasistencias y riesgos articulares.</p>
+                        </div>
+                    </div>
+                    <div class="card tech-card">
+                        <div class="tech-icon">🤖</div>
+                        <div class="tech-info">
+                            <h4>Groq API Client</h4>
+                            <p>Inferencia de pre-diagnósticos basados en modelos de Inteligencia Artificial (Llama 3).</p>
+                        </div>
+                    </div>
+                    <div class="card tech-card">
+                        <div class="tech-icon">📄</div>
+                        <div class="tech-info">
+                            <h4>OpenHTMLtoPDF</h4>
+                            <p>Versión 1.0.10. Renderizado de plantillas HTML en documentos PDF de recetas médicas.</p>
+                        </div>
+                    </div>
+                    <div class="card tech-card">
+                        <div class="tech-icon">🛡️</div>
+                        <div class="tech-info">
+                            <h4>Spring Security 6</h4>
+                            <p>Autenticación de usuarios, flujos OAuth2 (Google/GitHub) y verificación biométrica.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 03 ARQUITECTURA -->
+            <section id="arquitectura" class="fade-in-section">
+                <span class="section-tag">03 — Arquitectura</span>
+                <h2 class="section-title">Análisis de la Arquitectura Física</h2>
+
+                <div class="architecture-container" style="margin-bottom: 3rem;">
+                    <div>
+                        <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Capas de Software e Interacción</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Haz clic en cada una de las capas para visualizar la estructura del código, los archivos involucrados, fortalezas encontradas y los errores arquitectónicos auditados.</p>
+                        
+                        <div class="layers-interactive">
+                            <div class="layer-box" data-layer="presentation">Presentación (Vista Thymeleaf / REST Client)</div>
+                            <div class="layer-arrow">↓</div>
+                            <div class="layer-box" data-layer="controller">Capa Controller (UsuarioController, ClinicaController)</div>
+                            <div class="layer-arrow">↓</div>
+                            <div class="layer-box" data-layer="service">Capa Service / Impl (Lógica de Negocio)</div>
+                            <div class="layer-arrow">↓</div>
+                            <div class="layer-box" data-layer="repository">Capa Repository (Spring Data MongoDB Interfaces)</div>
+                            <div class="layer-arrow">↓</div>
+                            <div class="layer-box" data-layer="mongodb">Base de Datos (MongoDB Engine)</div>
+                        </div>
+                    </div>
+
+                    <div class="layer-details-panel">
+                        <div class="layer-details-placeholder" id="layerDetailsPlaceholder">
+                            <svg width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.303.197-1.591 1.591M21.75 12h-2.25m-.197 5.303-1.591-1.591M12 19.5v2.25m-5.303-.197 1.591-1.591M2.25 12h2.25m-.197-5.303 1.591 1.591"/>
+                            </svg>
+                            <p>Selecciona una capa arquitectónica para ver su diagnóstico detallado.</p>
+                        </div>
+                        <div class="layer-details-content" id="layerDetailsContent" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h3 style="color: var(--accent-red); margin-bottom: 0.75rem;">Controller → Repository Bypass</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Los controladores encargados del flujo principal de datos omiten la capa de servicios intermediaria y consumen directamente las interfaces de la capa Repository.</p>
+                        
+                        <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">Evidencias Encontradas</h4>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.85rem;">
+                            <li style="background: rgba(0,0,0,0.2); padding: 0.4rem; border-radius: 4px; border-left: 3px solid var(--accent-red);">
+                                <strong>UsuarioController.java</strong>: Inyección de UsuarioRepository (L80), CitaRepository (L82), ResenaRepository (L84), VisitaRepository (L86), AnuncioGlobalRepository (L88).
+                            </li>
+                            <li style="background: rgba(0,0,0,0.2); padding: 0.4rem; border-radius: 4px; border-left: 3px solid var(--accent-red);">
+                                <strong>ClinicaController.java</strong>: Inyecta directamente 8 repositorios (Líneas 66 a 98).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="color: var(--accent-yellow); margin-bottom: 0.75rem;">Violación de Responsabilidad Única (SRP)</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Los controladores concentran lógica de transformación, formateo, conversiones a DTOs y lógica transaccional redundante.</p>
+                        
+                        <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">Tamaño de Clases Auditado</h4>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.85rem;">
+                            <li style="background: rgba(0,0,0,0.2); padding: 0.4rem; border-radius: 4px; border-left: 3px solid var(--accent-yellow); display: flex; justify-content: space-between;">
+                                <span>UsuarioController.java</span>
+                                <span style="color: var(--accent-red);">2,016 líneas</span>
+                            </li>
+                            <li style="background: rgba(0,0,0,0.2); padding: 0.4rem; border-radius: 4px; border-left: 3px solid var(--accent-yellow); display: flex; justify-content: space-between;">
+                                <span>ClinicaController.java</span>
+                                <span style="color: var(--accent-red);">1,211 líneas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 04 CONFIGURACIÓN -->
+            <section id="configuracion" class="fade-in-section">
+                <span class="section-tag">04 — Configuración</span>
+                <h2 class="section-title">Parámetros & Secretos de Aplicación</h2>
+                
+                <div class="grid-2">
+                    <div class="card">
+                        <h3 style="margin-bottom: 0.5rem;">Carga y Desacoplamiento de Entorno</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">La configuración técnica reside en los archivos <code>application.properties</code> y <code>application.yml</code>.</p>
+                        
+                        <div style="display: flex; align-items: center; justify-content: space-between; background-color: rgba(16, 185, 129, 0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 1rem;">
+                            <div>
+                                <h4 style="color: var(--accent-green); font-size: 0.95rem;">Interpolación de Variables</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Secrets como las API keys de Stripe y la URI de MongoDB se leen del entorno local en ejecución.</p>
+                            </div>
+                            <span class="severity-badge baja">Aceptable</span>
+                        </div>
+                        
+                        <pre style="margin: 0;">stripe.api.key.secret=${STRIPE_SECRET_KEY:}
+spring.data.mongodb.uri=${MONGODB_URI:mongodb://localhost:27017/clinica_veterinaria_db}</pre>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom: 0.5rem; color: var(--accent-red);">Ausencia de Perfiles de Ejecución</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">El backend carece de perfiles definidos por archivo (como <code>application-dev.properties</code> o <code>application-test.properties</code>).</p>
+                        
+                        <div style="border-left: 4px solid var(--accent-yellow); padding-left: 1rem; background-color: rgba(245, 158, 11, 0.03); padding-top: 0.75rem; padding-bottom: 0.75rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem;">
+                            <h4 style="font-size: 0.95rem; color: var(--accent-yellow); margin-bottom: 0.25rem;">Impacto Directo</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Impide configurar comportamientos aislados y obliga a utilizar las credenciales principales, lo cual termina afectando la fase de testing del compilador local.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 05 ERRORES -->
+            <section id="errores" class="fade-in-section">
+                <span class="section-tag">05 — Manejo de Errores</span>
+                <h2 class="section-title">Control de Excepciones & Respuestas</h2>
+
+                <div class="card" style="margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div>
+                            <h3 style="color: var(--accent-red);">Evaluación del GlobalControllerAdvice</h3>
+                            <p style="color: var(--text-secondary); margin-top: 0.25rem;">La clase centralizada <code>GlobalControllerAdvice.java</code> no posee anotaciones <code>@ExceptionHandler</code>.</p>
+                        </div>
+                        <span class="severity-badge alta">Deficiente</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.925rem; margin-bottom: 1.5rem;">Su única función actual consiste en rellenar atributos del modelo HTML de Thymeleaf mediante el método <code>addNotificationsToModel</code> marcado con la anotación <code>@ModelAttribute</code> (Línea 29). Como consecuencia, ante errores de negocio o de mapeo, los clientes reciben páginas genéricas o stacktraces Java en crudo.</p>
+
+                    <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem;">Comportamientos de Excepción Comprobados</h4>
+                    <div class="grid-2">
+                        <div class="scenario-box">
+                            <div class="scenario-title">
+                                <span class="scenario-badge yellow">Escenario 1</span>
+                                <span>Entrada Inválida de Datos</span>
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Debido a la ausencia de Bean Validation (<code>jakarta.validation.constraints</code>) en <code>Cita.java</code> y DTOs, los controladores procesan campos nulos. Si un objeto JSON entrante está vacío, Spring Boot arroja errores HTTP de parsing o almacena datos inconsistentes en MongoDB.</p>
+                        </div>
+                        <div class="scenario-box">
+                            <div class="scenario-title">
+                                <span class="scenario-badge red">Escenario 2</span>
+                                <span>Recurso Inexistente / Búsqueda</span>
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">En flujos de consulta (ej. buscar clínicas), ante una clave ausente el controlador captura el flujo e inicia una redirección web con parámetros de query en la URL (<code>redirect:/buscar-clinicas?error=notfound</code>).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 06 SEGURIDAD -->
+            <section id="seguridad" class="fade-in-section">
+                <span class="section-tag">06 — Seguridad</span>
+                <h2 class="section-title">Auditoría de Vulnerabilidades & Seguridad</h2>
+                
+                <div class="grid-3" style="margin-bottom: 2rem;">
+                    <div class="card" style="border-top: 4px solid var(--accent-red);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <span style="font-weight: bold; color: var(--accent-red);">CSRF Deshabilitado</span>
+                            <span class="severity-badge alta">Crítico</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Se desactivó globalmente la protección CSRF en <code>SecurityConfig.java:L53</code>.</p>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">Dado que ClínicaApp utiliza sesiones web basadas en cookies tradicionales (JSESSIONID) para roles de administración, esta omisión expone a los usuarios a ataques Cross-Site Request Forgery.</p>
+                    </div>
+
+                    <div class="card" style="border-top: 4px solid var(--accent-red);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <span style="font-weight: bold; color: var(--accent-red);">CORS Universal Abierto</span>
+                            <span class="severity-badge alta">Crítico</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Se configuró la directiva CORS comodín <code>allowedOrigins("*")</code> en <code>WebConfig.java:L22</code>.</p>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">Los controladores REST individuales replican también esta anotación, permitiendo que cualquier portal web externo acceda libremente a la información médica de los pacientes.</p>
+                    </div>
+
+                    <div class="card" style="border-top: 4px solid var(--accent-red);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <span style="font-weight: bold; color: var(--accent-red);">Monitoreo Vulnerable</span>
+                            <span class="severity-badge alta">Crítico</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Credencial/PIN estático hardcodeado detectado en <code>ApiSystemController.java</code>.</p>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">El PIN se valida en el código de producción mediante una comparación estática directa. Al estar la ruta <code>/api/**</code> permitida de forma pública en Spring Security, el endpoint es accesible sin autenticación.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="margin-bottom: 0.75rem; font-size: 1.2rem;">Endpoints Públicos en SecurityConfig.java</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">El mapeo de filtros permite accesos públicos generales a todas las llamadas del prefijo <code>/api/**</code> sin verificar roles:</p>
+                    <pre style="margin: 0;">.requestMatchers(HttpMethod.POST,
+        "/registro",
+        "/forgot-password",
+        "/reset-password",
+        "/auth/login-facial",
+        "/api/**" // <-- Permite el acceso anónimo a la API REST de forma pública
+).permitAll()</pre>
+                </div>
+            </section>
+
+            <!-- 07 API -->
+            <section id="api" class="fade-in-section">
+                <span class="section-tag">07 — Documentación</span>
+                <h2 class="section-title">Contratos de Integración de API</h2>
+                
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div>
+                            <h3 style="color: var(--accent-yellow);">Especificación OpenAPI / Swagger</h3>
+                            <p style="color: var(--text-secondary); margin-top: 0.25rem;">La especificación interactiva del API no está integrada en el servidor.</p>
+                        </div>
+                        <span class="severity-badge" style="background-color: rgba(245, 158, 11, 0.1); color: var(--accent-yellow); border-color: rgba(245, 158, 11, 0.2);">Sin Implementar</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">La revisión de <code>pom.xml</code> constató que no hay dependencias del SDK Swagger UI (<code>springdoc-openapi-starter-webmvc-ui</code>). Esto obliga a los desarrolladores de la app móvil a leer y buscar las firmas Java de los endpoints de forma manual.</p>
+                </div>
+            </section>
+
+            <!-- 08 TESTING -->
+            <section id="testing" class="fade-in-section">
+                <span class="section-tag">08 — Testing</span>
+                <h2 class="section-title">Pruebas Automatizadas & Construcción</h2>
+                
+                <div class="grid-2" style="margin-bottom: 2rem;">
+                    <div class="card">
+                        <h3 style="margin-bottom: 0.75rem;">Cobertura de Código</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">El proyecto posee un único test automatizado básico que verifica únicamente la carga inicial del contenedor de Spring.</p>
+                        
+                        <div style="background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; border-left: 3px solid var(--text-muted);">
+                            <strong>ClinicaappApplicationTests.java</strong><br>
+                            @SpringBootTest<br>
+                            class ClinicaappApplicationTests {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;@Test<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;void contextLoads() {}<br>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="card" style="border-color: var(--accent-red);">
+                        <h3 style="color: var(--accent-red); margin-bottom: 0.75rem;">Fallo Crítico al Compilar (mvnw test)</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Las pruebas fallan y provocan un error de construcción general (BUILD FAILURE) si no existe un motor de MongoDB levantado localmente.</p>
+                        
+                        <div style="background-color: rgba(244, 63, 94, 0.05); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; border-left: 3px solid var(--accent-red); margin-bottom: 0.5rem;">
+                            Caused by: com.mongodb.MongoTimeoutException: Timed out after 30000 ms while waiting for a server that matches ReadPreferenceServerSelector{readPreference=primary}
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">Causa: Al arrancar el contexto de pruebas mediante <code>@SpringBootTest</code>, se ejecuta el inicializador <code>DataSeeder.java</code>, el cual realiza consultas de persistencia a MongoDB sin contar con un entorno de mocking o base de datos embebida aislada.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 09 HALLAZGOS -->
+            <section id="hallazgos" class="fade-in-section">
+                <span class="section-tag">09 — Auditoría</span>
+                <h2 class="section-title">Hallazgos Encontrados</h2>
+
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="todos">Todos</button>
+                    <button class="filter-btn" data-filter="alta">Alta Severidad</button>
+                    <button class="filter-btn" data-filter="media">Media Severidad</button>
+                    <button class="filter-btn" data-filter="baja">Baja Severidad</button>
+                    <button class="filter-btn" data-filter="arquitectura">Arquitectura</button>
+                    <button class="filter-btn" data-filter="seguridad">Seguridad</button>
+                    <button class="filter-btn" data-filter="configuracion">Configuración</button>
+                    <button class="filter-btn" data-filter="errores">Manejo de Errores</button>
+                    <button class="filter-btn" data-filter="testing">Testing</button>
+                    <button class="filter-btn" data-filter="documentacion">Documentación</button>
+                </div>
+
+                <div class="grid-3" id="findingsGrid">
+                    <!-- Dynamic findings will be rendered here -->
+                </div>
+            </section>
+
+            <!-- 10 MATRIZ DE MADUREZ -->
+            <section id="madurez" class="fade-in-section">
+                <span class="section-tag">10 — Madurez</span>
+                <h2 class="section-title">Matriz de Madurez del Proyecto</h2>
+                
+                <div class="table-container">
+                    <table class="maturity-table">
+                        <thead>
+                            <tr>
+                                <th>Dimensión</th>
+                                <th style="text-align: center;">Inexistente</th>
+                                <th style="text-align: center;">Deficiente</th>
+                                <th style="text-align: center;">Aceptable</th>
+                                <th style="text-align: center;">Buena Práctica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="dim-name">Separación de Capas</td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;" class="active-cell"><span class="maturity-mark active">✓</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                            </tr>
+                            <tr>
+                                <td class="dim-name">Gestión de Configuración</td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;" class="active-cell"><span class="maturity-mark active">✓</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                            </tr>
+                            <tr>
+                                <td class="dim-name">Manejo de Errores</td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;" class="active-cell"><span class="maturity-mark active">✓</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                            </tr>
+                            <tr>
+                                <td class="dim-name">Seguridad Básica</td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;" class="active-cell"><span class="maturity-mark active">✓</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                            </tr>
+                            <tr>
+                                <td class="dim-name">Documentación de API</td>
+                                <td style="text-align: center;" class="active-cell"><span class="maturity-mark active">✓</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                            </tr>
+                            <tr>
+                                <td class="dim-name">Pruebas Automatizadas</td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;" class="active-cell"><span class="maturity-mark active">✓</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                                <td style="text-align: center;"><span class="maturity-mark inactive">—</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 11 ROADMAP -->
+            <section id="roadmap" class="fade-in-section">
+                <span class="section-tag">11 — Roadmap</span>
+                <h2 class="section-title">Línea de Tiempo y Plan de Refactorización</h2>
+
+                <div class="timeline">
+                    <!-- Phase 1 -->
+                    <div class="timeline-item critical">
+                        <div class="timeline-badge">1</div>
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Fase 1 — Mitigación Crítica y Seguridad</h3>
+                            <span class="timeline-phase critical">Inmediato</span>
+                        </div>
+                        <p style="color: var(--text-secondary); max-width: 800px;">Corrección de brechas expuestas de acceso directo, hardcoding de llaves de monitoreo y reconfiguración de directivas de red del sistema.</p>
+                        
+                        <div class="timeline-grid">
+                            <div class="timeline-subcard">
+                                <div class="timeline-subcard-title">Remoción de PIN Hardcodeado</div>
+                                <div class="timeline-subcard-body">Mover la validación del PIN estático a una variable inyectada mediante <code>@Value</code> y proteger las rutas del subdirectorio <code>/api/system/**</code>.</div>
+                            </div>
+                            <div class="timeline-subcard">
+                                <div class="timeline-subcard-title">Reconfiguración de CSRF & CORS</div>
+                                <div class="timeline-subcard-body">Habilitar CSRF para vistas web de Thymeleaf basadas en cookies y restringir los orígenes permitidos de CORS en la API REST.</div>
+                            </div>
+                            <div class="timeline-subcard" style="grid-column: span 2;">
+                                <div class="timeline-subcard-title">Aislamiento de la Suite de Pruebas</div>
+                                <div class="timeline-subcard-body">Configurar un perfil activo de tests (<code>@ActiveProfiles("test")</code>) y aplicar base de datos embebida o <code>@MockBean</code> en <code>ClinicaappApplicationTests.java</code>.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="timeline-item important">
+                        <div class="timeline-badge">2</div>
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Fase 2 — Robustez y Arquitectura</h3>
+                            <span class="timeline-phase important">Mediano Plazo</span>
+                        </div>
+                        <p style="color: var(--text-secondary); max-width: 800px;">Mejora en la organización del código fuente, separación de capas lógicas y robustez ante fallos imprevistos.</p>
+                        
+                        <div class="timeline-grid">
+                            <div class="timeline-subcard">
+                                <div class="timeline-subcard-title">Desacoplamiento de Controladores</div>
+                                <div class="timeline-subcard-body">Eliminar el bypass directo de repositorios en <code>UsuarioController</code> y <code>ClinicaController</code>. Encapsular la lógica en servicios.</div>
+                            </div>
+                            <div class="timeline-subcard">
+                                <div class="timeline-subcard-title">Validaciones y Respuestas Unificadas</div>
+                                <div class="timeline-subcard-body">Crear un controlador de excepciones unificado REST mediante <code>@RestControllerAdvice</code> e integrar <code>Bean Validation</code>.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="timeline-item quality">
+                        <div class="timeline-badge">3</div>
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Fase 3 — Documentación & Calidad</h3>
+                            <span class="timeline-phase quality">Mantenimiento</span>
+                        </div>
+                        <p style="color: var(--text-secondary); max-width: 800px;">Estandarización de documentación y contratos técnicos para asegurar la continuidad de proyectos cliente complementarios.</p>
+                        
+                        <div class="timeline-grid">
+                            <div class="timeline-subcard" style="grid-column: span 2;">
+                                <div class="timeline-subcard-title">Integración de Swagger / OpenAPI</div>
+                                <div class="timeline-subcard-body">Añadir la dependencia de <code>springdoc-openapi-starter-webmvc-ui</code> en <code>pom.xml</code> para habilitar la generación automática de la interfaz interactiva.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+                  <!-- 12 EVIDENCIAS -->
+            <section id="evidencias" class="fade-in-section">
+                <span class="section-tag">12 — Evidencias</span>
+                <h2 class="section-title">Galería de Evidencias Técnicas</h2>
+
+                <div class="evidence-grid">
+                    <!-- Card 1 -->
+                    <div class="card evidence-card" onclick="openLightbox(0)">
+                        <div class="evidence-image-container">
+                            <img src="assets/evidencias/01-estructura-proyecto.jpg" alt="Estructura del Proyecto" class="evidence-img" onload="this.classList.add('loaded')" onerror="handleImageError(this)">
+                            <div class="evidence-fallback-placeholder">
+                                <div class="placeholder-editor-header">
+                                    <span class="editor-dot red"></span>
+                                    <span class="editor-dot yellow"></span>
+                                    <span class="editor-dot green"></span>
+                                    <span class="editor-title">IDE Project Tree</span>
+                                </div>
+                                <div class="placeholder-instruction-body">
+                                    <p class="pending-badge">⚠️ Captura Pendiente</p>
+                                    <p class="inst-text">Captura de pantalla del panel lateral (Project Explorer) que muestre la estructura de paquetes de <code>com.clinicaapp</code>.</p>
+                                    <span class="path-badge">01-estructura-proyecto.jpg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evidence-info">
+                            <span class="severity-badge baja" style="margin-bottom: 0.5rem; text-transform: uppercase;">Arquitectura</span>
+                            <div class="evidence-title">Evidencia 01 — Estructura del proyecto</div>
+                            <p class="evidence-desc">Estructura real del árbol de directorios y paquetes del backend.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card evidence-card" onclick="openLightbox(1)">
+                        <div class="evidence-image-container">
+                            <img src="assets/evidencias/02-bypass-service.jpg" alt="Bypass de Service" class="evidence-img" onload="this.classList.add('loaded')" onerror="handleImageError(this)">
+                            <div class="evidence-fallback-placeholder">
+                                <div class="placeholder-editor-header">
+                                    <span class="editor-dot red"></span>
+                                    <span class="editor-dot yellow"></span>
+                                    <span class="editor-dot green"></span>
+                                    <span class="editor-title">UsuarioController.java</span>
+                                </div>
+                                <div class="placeholder-instruction-body">
+                                    <p class="pending-badge">⚠️ Captura Pendiente</p>
+                                    <p class="inst-text">Captura del código fuente donde se inyectan los repositorios de MongoDB en la declaración `@Autowired`.</p>
+                                    <span class="path-badge">02-bypass-service.jpg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evidence-info">
+                            <span class="severity-badge baja" style="margin-bottom: 0.5rem; text-transform: uppercase;">Arquitectura</span>
+                            <div class="evidence-title">Evidencia 02 — Bypass de Service</div>
+                            <p class="evidence-desc">Inyección directa de repositorios en el controlador omitiendo servicios.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card evidence-card" onclick="openLightbox(2)">
+                        <div class="evidence-image-container">
+                            <img src="assets/evidencias/03-credencial-hardcodeada.jpg" alt="Credencial estática detectada" class="evidence-img" onload="this.classList.add('loaded')" onerror="handleImageError(this)">
+                            <div class="evidence-fallback-placeholder">
+                                <div class="placeholder-editor-header">
+                                    <span class="editor-dot red"></span>
+                                    <span class="editor-dot yellow"></span>
+                                    <span class="editor-dot green"></span>
+                                    <span class="editor-title">ApiSystemController.java</span>
+                                </div>
+                                <div class="placeholder-instruction-body">
+                                    <p class="pending-badge">⚠️ Captura Pendiente</p>
+                                    <p class="inst-text">Captura del condicional <code>if</code> de la validación del PIN. Asegúrate de ocultar/tachar el PIN real.</p>
+                                    <span class="path-badge">03-credencial-hardcodeada.jpg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evidence-info">
+                            <span class="severity-badge baja" style="margin-bottom: 0.5rem; text-transform: uppercase;">Seguridad</span>
+                            <div class="evidence-title">Evidencia 03 — Credencial estática detectada</div>
+                            <p class="evidence-desc">PIN estático de validación hardcodeado en la lógica del endpoint de sistema.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="card evidence-card" onclick="openLightbox(3)">
+                        <div class="evidence-image-container">
+                            <img src="assets/evidencias/04-cors-configuracion.jpg" alt="Configuración CORS" class="evidence-img" onload="this.classList.add('loaded')" onerror="handleImageError(this)">
+                            <div class="evidence-fallback-placeholder">
+                                <div class="placeholder-editor-header">
+                                    <span class="editor-dot red"></span>
+                                    <span class="editor-dot yellow"></span>
+                                    <span class="editor-dot green"></span>
+                                    <span class="editor-title">WebConfig.java</span>
+                                </div>
+                                <div class="placeholder-instruction-body">
+                                    <p class="pending-badge">⚠️ Captura Pendiente</p>
+                                    <p class="inst-text">Captura de la declaración CORS universal allowedOrigins("*") en WebConfig.</p>
+                                    <span class="path-badge">04-cors-configuracion.jpg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evidence-info">
+                            <span class="severity-badge baja" style="margin-bottom: 0.5rem; text-transform: uppercase;">Seguridad</span>
+                            <div class="evidence-title">Evidencia 04 — Configuración de CORS</div>
+                            <p class="evidence-desc">Especificación permisiva de orígenes CORS universales habilitados para el API.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="card evidence-card" onclick="openLightbox(4)">
+                        <div class="evidence-image-container">
+                            <img src="assets/evidencias/05-csrf-security.jpg" alt="Configuración CSRF" class="evidence-img" onload="this.classList.add('loaded')" onerror="handleImageError(this)">
+                            <div class="evidence-fallback-placeholder">
+                                <div class="placeholder-editor-header">
+                                    <span class="editor-dot red"></span>
+                                    <span class="editor-dot yellow"></span>
+                                    <span class="editor-dot green"></span>
+                                    <span class="editor-title">SecurityConfig.java</span>
+                                </div>
+                                <div class="placeholder-instruction-body">
+                                    <p class="pending-badge">⚠️ Captura Pendiente</p>
+                                    <p class="inst-text">Captura del filterChain desactivando CSRF mediante csrf.disable().</p>
+                                    <span class="path-badge">05-csrf-security.jpg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evidence-info">
+                            <span class="severity-badge baja" style="margin-bottom: 0.5rem; text-transform: uppercase;">Seguridad</span>
+                            <div class="evidence-title">Evidencia 05 — Configuración de CSRF</div>
+                            <p class="evidence-desc">Desactivación global del filtro de seguridad Cross-Site Request Forgery.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="card evidence-card" onclick="openLightbox(5)">
+                        <div class="evidence-image-container">
+                            <img src="assets/evidencias/06-maven-test-failure.jpg" alt="Fallo de pruebas" class="evidence-img" onload="this.classList.add('loaded')" onerror="handleImageError(this)">
+                            <div class="evidence-fallback-placeholder">
+                                <div class="placeholder-editor-header">
+                                    <span class="editor-dot red"></span>
+                                    <span class="editor-dot yellow"></span>
+                                    <span class="editor-dot green"></span>
+                                    <span class="editor-title">Terminal Console (mvnw test)</span>
+                                </div>
+                                <div class="placeholder-instruction-body">
+                                    <p class="pending-badge">⚠️ Captura Pendiente</p>
+                                    <p class="inst-text">Captura de la salida de consola mostrando el timeout de base de datos y BUILD FAILURE.</p>
+                                    <span class="path-badge">06-maven-test-failure.jpg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evidence-info">
+                            <span class="severity-badge baja" style="margin-bottom: 0.5rem; text-transform: uppercase;">Testing</span>
+                            <div class="evidence-title">Evidencia 06 — Fallo de pruebas</div>
+                            <p class="evidence-desc">Bloqueo de compilación de Maven debido al acoplamiento físico con MongoDB local.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="card evidence-card" onclick="openLightbox(6)">
+                        <div class="evidence-image-container">
+                            <img src="assets/evidencias/07-swagger-no-implementado.jpg" alt="Swagger No Implementado" class="evidence-img" onload="this.classList.add('loaded')" onerror="handleImageError(this)">
+                            <div class="evidence-fallback-placeholder">
+                                <div class="placeholder-editor-header">
+                                    <span class="editor-dot red"></span>
+                                    <span class="editor-dot yellow"></span>
+                                    <span class="editor-dot green"></span>
+                                    <span class="editor-title">pom.xml dependencies</span>
+                                </div>
+                                <div class="placeholder-instruction-body">
+                                    <p class="pending-badge">⚠️ Captura Pendiente</p>
+                                    <p class="inst-text">Captura de las dependencias en pom.xml corroborando la ausencia de springdoc-openapi.</p>
+                                    <span class="path-badge">07-swagger-no-implementado.jpg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evidence-info">
+                            <span class="severity-badge baja" style="margin-bottom: 0.5rem; text-transform: uppercase;">Documentación</span>
+                            <div class="evidence-title">Evidencia 07 — OpenAPI no implementado</div>
+                            <p class="evidence-desc">Ausencia de librerías y consolas auto-generadas Swagger UI en la estructura pom.xml.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXTRA CONCLUSIONS -->
+            <section id="conclusiones" class="fade-in-section">
+                <span class="section-tag">Conclusión General</span>
+                <h2 class="section-title">Síntesis Académica</h2>
+                
+                <div class="conclusions-box">
+                    <p>El proyecto ClínicaApp presenta un desarrollo sofisticado e integraciones de gran valor práctico con librerías externas avanzadas (como Stripe, Twilio y algoritmos de Machine Learning de Weka). Sin embargo, el acoplamiento físico en las capas del sistema y las brechas severas en seguridad exponen al ecosistema a fallos lógicos durante el mantenimiento y a vulnerabilidades graves frente a accesos maliciosos.</p>
+                    <p>La refactorización descrita en las fases del Roadmap es fundamental para garantizar que el proyecto sea viable, mantenible y seguro antes de su puesta en producción. Resolver la dependencia acoplada de base de datos en las pruebas locales es el primer paso necesario para implementar un flujo continuo de testing y asegurar la estabilidad de la lógica empresarial.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p><strong>ClínicaApp — Diagnóstico Técnico</strong></p>
+            <p>Análisis técnico de un proyecto Spring Boot existente</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">Estudiante: <span contenteditable="true" style="border-bottom: 1px dashed var(--accent-blue); padding: 0 4px; color: var(--text-primary);">[Nombre del Estudiante]</span> | Profesor: <span contenteditable="true" style="border-bottom: 1px dashed var(--accent-blue); padding: 0 4px; color: var(--text-primary);">[Nombre del Profesor]</span></p>
+        </div>
+    </footer>
+
+    <!-- Finding Details Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Detalle del Hallazgo</h3>
+                <button class="modal-close" id="modalClose" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic body content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-nav-btn prev" id="lightboxPrev" aria-label="Anterior">&lsaquo;</button>
+        
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">&times;</button>
+            <div class="lightbox-image-wrapper" id="lightboxImageWrapper">
+                <!-- Image or placeholder will be rendered dynamically -->
+            </div>
+            <div class="lightbox-details">
+                <span class="lightbox-category" id="lightboxCategory">Categoría</span>
+                <h3 class="lightbox-title" id="lightboxTitle">Título de Evidencia</h3>
+                <p class="lightbox-desc" id="lightboxDesc">Descripción de la captura de pantalla.</p>
+                <div class="lightbox-meta">
+                    <strong>Archivo relacionado:</strong> <span id="lightboxFile">archivo.java</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="lightbox-nav-btn next" id="lightboxNext" aria-label="Siguiente">&rsaquo;</button>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
