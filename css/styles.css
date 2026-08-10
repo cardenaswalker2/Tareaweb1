@@ -28,6 +28,84 @@
     --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
 }
 
+body.light-theme {
+    --bg-main: #f8fafc;
+    --bg-sidebar: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f1f5f9;
+    --bg-badge: #e2e8f0;
+    --border-color: #cbd5e1;
+    --border-hover: #94a3b8;
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    
+    --accent-blue: #0284c7;
+    --accent-blue-rgb: 2, 132, 199;
+    --accent-green: #059669;
+    --accent-green-rgb: 5, 150, 105;
+    --accent-yellow: #d97706;
+    --accent-yellow-rgb: 217, 119, 6;
+    --accent-red: #e11d48;
+    --accent-red-rgb: 225, 29, 72;
+    
+    --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+}
+
+body, aside.sidebar, main.main-content, .card, .layer-box, .timeline-subcard, table, th, td, pre, code, .modal-container, .lightbox-content, .theme-toggle, footer.site-footer, .mobile-header, .filter-bar {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme pre {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #0f172a;
+}
+body.light-theme code {
+    background-color: rgba(15, 23, 42, 0.05);
+}
+body.light-theme .scenario-box {
+    background-color: rgba(15, 23, 42, 0.02);
+}
+body.light-theme .timeline-subcard {
+    background-color: rgba(15, 23, 42, 0.01);
+}
+body.light-theme .status-summary-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+    border-color: rgba(2, 132, 199, 0.2);
+}
+body.light-theme .conclusions-box {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-color: rgba(2, 132, 199, 0.15);
+}
+
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    background-color: rgba(56, 189, 248, 0.08);
+    transform: rotate(15deg);
+}
+
+.theme-toggle svg {
+    transition: transform 0.3s ease;
+}
+
 * {
     margin: 0;
     padding: 0;
