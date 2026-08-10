@@ -395,7 +395,7 @@ spring.data.mongodb.uri=${MONGODB_URI:mongodb://localhost:27017/clinica_veterina
                         <h3 style="margin-bottom: 0.75rem;">Cobertura de Código</h3>
                         <p style="color: var(--text-secondary); margin-bottom: 1rem;">El proyecto posee un único test automatizado básico que verifica únicamente la carga inicial del contenedor de Spring.</p>
                         
-                        <div style="background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; border-left: 3px solid var(--text-muted);">
+                        <div class="code-block-mock" style="background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; border-left: 3px solid var(--text-muted);">
                             <strong>ClinicaappApplicationTests.java</strong><br>
                             @SpringBootTest<br>
                             class ClinicaappApplicationTests {<br>
@@ -409,7 +409,7 @@ spring.data.mongodb.uri=${MONGODB_URI:mongodb://localhost:27017/clinica_veterina
                         <h3 style="color: var(--accent-red); margin-bottom: 0.75rem;">Fallo Crítico al Compilar (mvnw test)</h3>
                         <p style="color: var(--text-secondary); margin-bottom: 1rem;">Las pruebas fallan y provocan un error de construcción general (BUILD FAILURE) si no existe un motor de MongoDB levantado localmente.</p>
                         
-                        <div style="background-color: rgba(244, 63, 94, 0.05); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; border-left: 3px solid var(--accent-red); margin-bottom: 0.5rem;">
+                        <div class="terminal-log" style="background-color: rgba(244, 63, 94, 0.05); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; border-left: 3px solid var(--accent-red); margin-bottom: 0.5rem;">
                             Caused by: com.mongodb.MongoTimeoutException: Timed out after 30000 ms while waiting for a server that matches ReadPreferenceServerSelector{readPreference=primary}
                         </div>
                         <p style="font-size: 0.8rem; color: var(--text-muted);">Causa: Al arrancar el contexto de pruebas mediante <code>@SpringBootTest</code>, se ejecuta el inicializador <code>DataSeeder.java</code>, el cual realiza consultas de persistencia a MongoDB sin contar con un entorno de mocking o base de datos embebida aislada.</p>
