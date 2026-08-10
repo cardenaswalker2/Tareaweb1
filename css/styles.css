@@ -1682,6 +1682,26 @@ footer.site-footer {
     }
 }
 
+/* PDF Download Button styles */
+.download-pdf-btn {
+    color: #080c14 !important;
+    transition: var(--transition);
+}
+
+.download-pdf-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4) !important;
+    filter: brightness(1.15);
+}
+
+body.light-theme .download-pdf-btn {
+    color: #ffffff !important;
+}
+
+body.light-theme .download-pdf-btn:hover {
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4) !important;
+}
+
 /* Reduced Motion preference */
 @media (prefers-reduced-motion: reduce) {
     * {
