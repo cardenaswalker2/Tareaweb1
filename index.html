@@ -779,6 +779,25 @@ spring.data.mongodb.uri=${MONGODB_URI:mongodb://localhost:27017/clinica_veterina
                             Descargar Informe Técnico Completo (PDF)
                         </a>
                     </div>
+
+                    <!-- Bloque destacado para ClínicaApp en Render -->
+                    <div style="margin-top: 2rem; padding: 1.5rem; border-radius: 10px; background-color: rgba(56, 189, 248, 0.04); border: 1px dashed rgba(56, 189, 248, 0.25); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                        <h4 style="margin: 0; font-size: 1.2rem; color: var(--accent-blue); font-weight: 600;">¿Quieres ver la aplicación en funcionamiento?</h4>
+                        <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary); max-width: 600px;">
+                            También puedes acceder a la aplicación ClínicaApp desplegada en Render. Ten en cuenta que, al estar alojada en un servicio que puede poner el servidor en reposo, la primera carga puede tardar aproximadamente 1 minuto mientras el servidor vuelve a activarse.
+                        </p>
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                            <a href="https://clinicaapp-fh9j.onrender.com/" target="_blank" rel="noopener noreferrer" class="download-pdf-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--accent-blue); padding: 0.75rem 1.25rem; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2); transition: var(--transition);">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="flex-shrink: 0;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                </svg>
+                                Ver ClínicaApp en funcionamiento →
+                            </a>
+                            <span style="font-size: 0.8rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.25rem; margin-top: 0.25rem;">
+                                ⏱ Primera carga: hasta ~1 minuto
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
